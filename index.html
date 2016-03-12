@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="it" lang="it">
 <head>
-    <title>Home Page - Tecnologie Web</title>
+    <title>API AltBeacon - Documentazione</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="title" content="API AltBeacon - Documentazione" />
     <meta name="author" content="Federico Tavella" />
     <meta name="language" content="italian it" />
-    <link href="corso_tec.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen"/>
 </head>
 <body>
 <h1>Android Beacon Library 2.7 API</h1>
-
+<div>
+<h2>Indice</h2>
+<p>Da fare.</p>
+</div>
 <h2>AndroidModel</h2>
 
 <p>Rappresenta uno specifico modello di dispositivo Android basato sulle informazioni di build disponibili sul dispositivo.</p>
@@ -58,14 +61,14 @@
 <h2>BeaconConsumer</h2>
 
 <p>Un'interfaccia per una Activity o un Service che vuole interagire con i beacon. L'interfaccia viene utilizzata insieme a BeaconManager e fornice una callback quando BeaconService è pronto per essere utilizzato. Finché questa callback non viene effettuata, collocare e monitorare beacons non è possibile. Nell'esempio, una Activity implementa BeaconConsumer, la lega (fa il bind) al suo servizio, poi quando riceve la callback che conferma che il servizio è pronto, inizia a monitorare.</p>
-
-<pre><code>public class RangingActivity extends Activity implements BeaconConsumer {
+<pre><code class="examples">
+  public class RangingActivity extends Activity implements BeaconConsumer {
   protected static final String TAG = "RangingActivity";
   private BeaconManager beaconManager = BeaconManager.getInstanceForApplication(this);
   @Override
   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_ranging);
+      setContentView(R.layout.activity&#95;ranging);
       beaconManager.bind(this);
   }
 
@@ -92,9 +95,9 @@
           e.printStackTrace();
       }
   }
+ }
 </code></pre>
-
-<p>}</p>
+<p></p>
 
 <h2>BeaconData</h2>
 
@@ -141,27 +144,27 @@
 
 <p>niente documentazione</p>
 
-<pre><code>public static final long DEFAULT_FOREGROUND_SCAN_PERIOD
+<pre><code>public static final long DEFAULT&#95;FOREGROUND&#95;SCAN&#95;PERIOD
 </code></pre>
 
 <p>La durata di default (in millisecondi) del ciclo di scan del bluetooth</p>
 
-<pre><code>public static final long DEFAULT_FOREGROUND_BETWEEN_SCAN_PERIOD
+<pre><code>public static final long DEFAULT&#95;FOREGROUND&#95;BETWEEN&#95;SCAN&#95;PERIOD
 </code></pre>
 
 <p>La durata di default (in ms) spesa senza scannerizzare tra ogni ciclo di scan del bluetooth</p>
 
-<pre><code>DEFAULT_BACKGROUND_SCAN_PERIOD
+<pre><code>DEFAULT&#95;BACKGROUND&#95;SCAN&#95;PERIOD
 </code></pre>
 
 <p>La durata di default del ciclo di scan del bluetooth quando nessun client di scan/monitoraggio è in primo piano</p>
 
-<pre><code>DEFAULT_BACKGROUND_BETWEEN_SCAN_PERIOD
+<pre><code>DEFAULT&#95;BACKGROUND&#95;BETWEEN&#95;SCAN&#95;PERIOD
 </code></pre>
 
 <p>La durata di default (in ms) spesa senza fare lo scan tra ogni ciclo di scan del bluetooth quando nessun client di monitoraggio è in primo piano</p>
 
-<pre><code>public static final long DEFAULT_EXIT_PERIOD
+<pre><code>public static final long DEFAULT&#95;EXIT&#95;PERIOD
 </code></pre>
 
 <p>La durata di default del tempo di uscita dalla regione</p>

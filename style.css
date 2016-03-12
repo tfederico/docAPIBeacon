@@ -1,0 +1,47 @@
+html {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	background-color: AliceBlue;
+}
+
+h1{
+	text-align: center;
+	font: helvetica, sans;
+	font-size: 3em;
+}
+
+h2{
+	font-size: 2em;
+}
+
+h3{
+	font-size: 1.5em;
+}
+
+code{
+	margin-left: 2em;
+	padding: 0.5em;
+	border: 1px;
+	border-style: solid;
+	color: navy;
+	border-color:black;
+}
+
+blockquote{
+	font-style: italic;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	border: 1px;
+	border-style: solid;
+	color: DarkSlateGray;
+}
+
+.examples{
+	border:0;
+}
+
