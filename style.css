@@ -7,6 +7,7 @@ body{
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	background-color: AliceBlue;
+	width: 100%;
 }
 
 h1{
@@ -45,3 +46,9 @@ blockquote{
 	border:0;
 }
 
+#indexShow{
+	color: blue;
+	text-decoration: underline;
+	padding: 0;
+	width: 5em;
+}
