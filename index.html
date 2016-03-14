@@ -22,9 +22,10 @@
 	</script>
 </head>
 <body>
+<div id="content">
 <h1>Android Beacon Library 2.7 API</h1>
 <div>
-<h2 id="indexShow" onclick="showMenu();">Indice</button></h2>
+<h2 id="indexShow" onclick="showMenu();"><a href="#indice">Indice</a></h2>
 <p><ul id="indice" style="display: none;">
 	<li><a href="#AndroidModel">AndroidModel</a></li>
 	<li><a href="#BackgroundPowerSaver">BackgroundPowerSaver</a></li>
@@ -43,7 +44,7 @@
 	<li><a href="#Callback">Callback</a></li>
 	<li><a href="#CurveFittedDistanceCalculator">CurveFittedDistanceCalculator</a></li>
 	<li><a href="#CycledLeScanCallback">CycledLeScanCallback</a></li>
-	<li><a href="#CycledLeScannerScanner">CycledLeScanner</a></li>
+	<li><a href="#CycledLeScanner">CycledLeScanner</a></li>
 	<li><a href="#CycledLeScannerForLollipop">CycledLeScannerForLollipop</a></li>
 	<li><a href="#DetectionTracker">DetectionTracker</a></li>
 	<li><a href="#GattBeaconTracker">GattBeaconTracker</a></li>
@@ -348,13 +349,13 @@
 
 <h3>Costruttore</h3>
 
-<pre><code>protected CycledLeScanner(Context context, long scanPeriod, long betweenScanPeriod, boolean backgroundFlag, CycledLeScanCallback cycledLeScanCallback, BluetoothCrashResolver crashResolver) 
-</code></pre>
+<pre><code class="twoLineCode">protected CycledLeScanner(Context context, long scanPeriod, long betweenScanPeriod, boolean backgroundFlag,
+								CycledLeScanCallback cycledLeScanCallback, BluetoothCrashResolver crashResolver)</code></pre>
 
 <h3>Metodi</h3>
 
-<pre><code>static CycledLeScanner createScanner(Context context, long scanPeriod, long betweenScanPeriod, boolean backgroundFlag, CycledLeScanCallback cycledLeScanCallback, BluetoothCrashResolver crashResolver)
-</code></pre>
+<pre><code class="twoLineCode">static CycledLeScanner createScanner(Context context, long scanPeriod, long betweenScanPeriod, boolean backgroundFlag,
+								CycledLeScanCallback cycledLeScanCallback, BluetoothCrashResolver crashResolver)</code></pre>
 
 <p>No documentazione</p>
 
@@ -837,5 +838,6 @@
 <h2 id="UrlBeaconUrlCompressor">UrlBeaconUrlCompressor</h2>
 
 <p>Fornisce funzioni di encoding/decoding per l'URL dei beacon <a href="https://github.com/google/uribeacon">https://github.com/google/uribeacon</a> (repo che spiega come vengono usati i beacon per condividere uri, li porta a fare parte dell'internet of things)</p>
+</div>
 </body>
 </html>
