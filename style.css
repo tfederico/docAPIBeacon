@@ -41,7 +41,7 @@ code{
 }
 
 .twoLineCode{
-	border: 0;
+	display: block;
 }
 
 blockquote{
@@ -60,4 +60,8 @@ blockquote{
 #indexShow{
 	padding: 0;
 	width: 5em;
+}
+
+p{
+	margin: 0.5em;
 }
