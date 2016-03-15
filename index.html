@@ -7,8 +7,838 @@
     <meta name="author" content="Federico Tavella" />
     <meta name="language" content="italian it" />
     <link href="style.css" rel="stylesheet" type="text/css" media="screen"/>
-	<meta http-equiv="refresh" content="0;URL=index.php">
+	<script>
+	
+		function showMenu(){
+			show = document.getElementById("indice").style.display;
+					
+			if(show=="none")
+				show = "block";
+			else
+				show = "none";
+							
+			document.getElementById("indice").style.display = show;
+		}
+	</script>
 </head>
 <body>
+<div id="content">
+<h1>Android Beacon Library 2.7 API</h1>
+<div>
+<h2 id="indexShow" onclick="showMenu();"><a href="#indice">Indice</a></h2>
+<p><ul id="indice" style="display: none;">
+	<li><a href="#AndroidModel">AndroidModel</a></li>
+	<li><a href="#BackgroundPowerSaver">BackgroundPowerSaver</a></li>
+	<li><a href="#Beacon">Beacon</a></li>
+	<li><a href="#BeaconConsumer">BeaconConsumer</a></li>
+	<li><a href="#BeaconData">BeaconData</a></li>
+	<li><a href="#BeaconDataNotifier">BeaconDataNotifier</a></li>
+	<li><a href="#BeaconDataFactory">BeaconDataFactory</a></li>
+	<li><a href="#BeaconManager">BeaconManager</a></li>
+	<li><a href="#BeaconParser">BeaconParser</a></li>
+	<li><a href="#BeaconService">BeaconService</a></li>
+	<li><a href="#BeaconSimulator">BeaconSimulator</a></li>
+	<li><a href="#BeaconTrasmitter">BeaconTrasmitter</a></li>
+	<li><a href="#BleAdvertisement">BleAdvertisement</a></li>
+	<li><a href="#BluetoothCrashResolver">BluetoothCrashResolver</a></li>
+	<li><a href="#Callback">Callback</a></li>
+	<li><a href="#CurveFittedDistanceCalculator">CurveFittedDistanceCalculator</a></li>
+	<li><a href="#CycledLeScanCallback">CycledLeScanCallback</a></li>
+	<li><a href="#CycledLeScanner">CycledLeScanner</a></li>
+	<li><a href="#CycledLeScannerForLollipop">CycledLeScannerForLollipop</a></li>
+	<li><a href="#DetectionTracker">DetectionTracker</a></li>
+	<li><a href="#GattBeaconTracker">GattBeaconTracker</a></li>
+	<li><a href="#Identifier">Identifier</a></li>
+	<li><a href="#Logger">Logger</a></li>
+	<li><a href="#Loggers">Loggers</a></li>
+	<li><a href="#LogManager">LogManager</a></li>
+	<li><a href="#ModelSpecificDistanceCalculator">ModelSpecificDistanceCalculator</a></li>
+	<li><a href="#ModelSpecificDistanceUpdate">ModelSpecificDistanceUpdate</a></li>
+	<li><a href="#MonitoringData">MonitoringData</a></li>
+	<li><a href="#MonitorData">MonitorNotifier</a></li>
+	<li><a href="#MonitorState">MonitorState</a></li>
+	<li><a href="#NonBeaconLeScanCallback">NonBeaconLeScanCallback</a></li>
+	<li><a href="#Pdu">Pdu</a></li>
+	<li><a href="#RangedBeacon">RangedBeacon</a></li>
+	<li><a href="#RangeNotifier">RangeNotifier</a></li>
+	<li><a href="#RangeState">RangeState</a></li>
+	<li><a href="#RangingData">RangingData</a></li>
+	<li><a href="#Region">Region</a></li>
+	<li><a href="#RegionBootstrap">RegionBootstrap</a></li>
+	<li><a href="#RssiFilter">RssiFilter</a></li>
+	<li><a href="#RunningAverageRssiFilter">RunningAverageRssiFilter</a></li>
+	<li><a href="#ScanFilterUtils">ScanFilterUtils</a></li>
+	<li><a href="#StartRMData">StartRMData</a></li>
+	<li><a href="#StartupBroadcastReceiver">StartupBroadcastReceiver</a></li>
+	<li><a href="#StaticBeaconSimulator">StaticBeaconSimulator</a></li>
+	<li><a href="#Stats">Stats</a></li>
+	<li><a href="#Stats.Sample">Stats.Sample</a></li>
+	<li><a href="#UrlBeaconUrlCompressor">UrlBeaconUrlCompressor</a></li>
+	
+	
+	
+</ul></p>
+</div>
+<h2 id="AndroidModel">AndroidModel</h2>
+
+<p>Rappresenta uno specifico modello di dispositivo Android basato sulle informazioni di build disponibili sul dispositivo.</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>AndroidModel(String version, String buildNumber, String model, String manufacturer)
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>int matchScore(AndroidModel otherModel)
+</code></pre>
+
+<p>Calcola un confronto qualitativo tra 2 dispositivi Android differenti per capire quanto sono simili le risposte di livello di segnale del Bluetooth</p>
+
+<h2 id="BackgroundPowerSaver">BackgroundPowerSaver</h2>
+
+<p>Creando un'istanza di questa classe e mantenendo un riferimento nella tua Application migliora la durata della batteria del 60% rallentando lo scan quando l'app è in background</p>
+
+<h2 id="Beacon">Beacon</h2>
+
+<p>Rappresenta un singolo Beacon (inteso come hardware) rilevato da un dispositivo Android.</p>
+
+<blockquote>
+  <p>A Beacon is identified by a unique multi-part identifier, with the first of the ordered identifiers being more significant for the purposes of grouping beacons. A Beacon sends a Bluetooth Low Energy (BLE) advertisement that contains these three identifiers, along with the calibrated tx power (in RSSI) of the Beacon's Bluetooth transmitter. This class may only be instantiated from a BLE packet, and an RSSI measurement for the packet.  The class parses out the identifier, along with the calibrated tx power.  It then uses the measured RSSI and calibrated tx power to do a rough distance measurement (the mDistance field).</p>
+</blockquote>
+
+<h3>Classi interne</h3>
+
+<p>Beacon.Builder, classe builder per oggetti di tipo Beacon</p>
+
+<h3>Campi dati</h3>
+
+<pre><code>protected static BeaconDataFactory beaconDataFactory
+</code></pre>
+
+<p>Utilizzato per allegare dati ad un determinato Beacon, sia localmente che nel cloud</p>
+
+<pre><code>protected static DistanceCalculator sDistanceCalculator
+</code></pre>
+
+<p>Interfaccia utilizzata per calcolare una distanza approssimativa dal beacon al dispositivo</p>
+
+<h2 id="BeaconConsumer">BeaconConsumer</h2>
+
+<p>Un'interfaccia per una Activity o un Service che vuole interagire con i beacon. L'interfaccia viene utilizzata insieme a BeaconManager e fornice una callback quando BeaconService è pronto per essere utilizzato. Finché questa callback non viene effettuata, collocare e monitorare beacons non è possibile. Nell'esempio, una Activity implementa BeaconConsumer, la lega (fa il bind) al suo servizio, poi quando riceve la callback che conferma che il servizio è pronto, inizia a monitorare.</p>
+<pre><code class="twoLineCode">
+  public class RangingActivity extends Activity implements BeaconConsumer {
+  protected static final String TAG = "RangingActivity";
+  private BeaconManager beaconManager = BeaconManager.getInstanceForApplication(this);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity&#95;ranging);
+      beaconManager.bind(this);
+  }
+
+  @Override
+  protected void onDestroy() {
+      super.onDestroy();
+      beaconManager.unbind(this);
+  }
+
+  @Override
+  public void onBeaconServiceConnect() {
+      beaconManager.setRangeNotifier(new RangeNotifier() {
+        @Override
+        public void didRangeBeaconsInRegion(Collection beacons, Region region) {
+             if (beacons.size() &gt; 0) {
+                  Log.i(TAG, "The first beacon I see is about "+beacons.iterator().next().getDistance()+" meters away.");
+             }
+        }
+      });
+
+      try {
+          beaconManager.startRangingBeaconsInRegion(new Region("myRangingUniqueId", null, null, null));
+      } catch (RemoteException e) {
+          e.printStackTrace();
+      }
+  }
+ }
+</code></pre>
+<p></p>
+
+<h2 id="BeaconData">BeaconData</h2>
+
+<p>Interfaccia, rappresenta dati lato server associati ad un beacon. Richiedere la registrazione di un servizio web per raggiungere i dati.</p>
+
+<h2 id="BeaconDataNotifier">BeaconDataNotifier</h2>
+
+<p>Interfaccia, notifica quando un dato lato server di un beacon è disponibile presso un servizio web.</p>
+
+<h2 id="BeaconDataFactory">BeaconDataFactory</h2>
+
+<p>Interfaccia, può essere configurata per l'archivio dati (?) pubblico del beacon, o privato. In quello pubblico, puoi leggere qualsiasi valore ma scrivere solo i valori dei beacons che hai creato.</p>
+
+<h3>Metodi</h3>
+
+<pre><code>void requestBeaconData(Beacon beacon, BeaconDataNotifier notifier)
+</code></pre>
+
+<p>Chiamata asincrona quando il dato è disponibile, viene passato all'interfaccia BeaconDataNotifier.</p>
+
+<h2 id="BeaconManager">BeaconManager</h2>
+
+<p>Classe utilizzata per impostare le interazioni con un beacon da Activity o Service. Utilizzata assieme all'interfaccia BeaconConsumer, che fornire una callback quando BeaconService è pronta per essere utilizzata.</p>
+
+<h3>Campi dati</h3>
+
+<pre><code>protected static BeaconManager client
+</code></pre>
+
+<p>niente documentazione</p>
+
+<pre><code>protected RangeNotifier rangeNotifier
+</code></pre>
+
+<p>niente documentazione</p>
+
+<pre><code>protected RangeNotifier dataRequestNotifier
+</code></pre>
+
+<p>niente documentazione</p>
+
+<pre><code>protected MonitorNotifier monitorNotifier
+</code></pre>
+
+<p>niente documentazione</p>
+
+<pre><code>public static final long DEFAULT&#95;FOREGROUND&#95;SCAN&#95;PERIOD
+</code></pre>
+
+<p>La durata di default (in millisecondi) del ciclo di scan del bluetooth</p>
+
+<pre><code>public static final long DEFAULT&#95;FOREGROUND&#95;BETWEEN&#95;SCAN&#95;PERIOD
+</code></pre>
+
+<p>La durata di default (in ms) spesa senza scannerizzare tra ogni ciclo di scan del bluetooth</p>
+
+<pre><code>DEFAULT&#95;BACKGROUND&#95;SCAN&#95;PERIOD
+</code></pre>
+
+<p>La durata di default del ciclo di scan del bluetooth quando nessun client di scan/monitoraggio è in primo piano</p>
+
+<pre><code>DEFAULT&#95;BACKGROUND&#95;BETWEEN&#95;SCAN&#95;PERIOD
+</code></pre>
+
+<p>La durata di default (in ms) spesa senza fare lo scan tra ogni ciclo di scan del bluetooth quando nessun client di monitoraggio è in primo piano</p>
+
+<pre><code>public static final long DEFAULT&#95;EXIT&#95;PERIOD
+</code></pre>
+
+<p>La durata di default del tempo di uscita dalla regione</p>
+
+<h3>Metodi</h3>
+
+<pre><code>public boolean checkAvailability() throws BleNotAvailableException
+</code></pre>
+
+<p>Controlla se BLE è supportato dal dispositivo Android e si assicura che sia attivato</p>
+
+<pre><code>public void bind(BeaconConsumer consumer)
+</code></pre>
+
+<p>Lega un Activity o un Service ad un BeaconService. L'Activity/Service deve implementare l'interfaccia BeaconConsumer in modo che possa ricevere la callback quando il servizio è pronto per essere usato</p>
+
+<pre><code>altri metodi
+</code></pre>
+
+<p><a href="http://altbeacon.github.io/android-beacon-library/javadoc/org/altbeacon/beacon/BeaconManager.html#client">http://altbeacon.github.io/android-beacon-library/javadoc/org/altbeacon/beacon/BeaconManager.html#client</a></p>
+
+<h2 id="BeaconParser">BeaconParser</h2>
+
+<p>Un BeaconParser può essere utilizzato per dire alla libreria come decifrare i campi di un annuncio pubblicitario (advertisement?) BLE, specificando che offset di byte coincide con quali campi.</p>
+
+<h2 id="BeaconService">BeaconService</h2>
+
+<p>Nessuna documentazione, estende la classe Service (componente di un'applicazione che rappresenta sia il desiderio di un'applicazione di eseguire una operazione a lungo tempo di esecuzione mentre non si interagisce con l'utente o non si forniscono funzionalità da usare per altre applicazioni. Ogni service deve avere un corrispondente dichiarazione di &lt;service&gt; nel suo pacchetto AndroidManifest.xml).</p>
+
+<h3>Metodi</h3>
+
+<pre><code>public IBinder onBind(Intent intent)
+</code></pre>
+
+<p>Quando si lega ad un servizio, ritorna un'interfaccia al nostro messaggero per inviare messaggi al service.</p>
+
+<pre><code>public void onCreate()
+</code></pre>
+
+<p>no documentazione</p>
+
+<pre><code>public void onDestroy()
+</code></pre>
+
+<p>no documentazione</p>
+
+<pre><code>public void startRangingBeaconsInRegion(Region region, Callback callback)
+</code></pre>
+
+<p>no documentazione</p>
+
+<h2 id="BeaconSimulator">BeaconSimulator</h2>
+
+<p>Interfaccia, no documentazione.</p>
+
+<h3>Metodi</h3>
+
+<pre><code>List&lt;Beacon&gt; getBeacons()
+</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="BeaconTrasmitter">BeaconTrasmitter</h2>
+
+<p>Fornisce un meccanismo per trasmettere come se fosse un Beacon (richiede Android 5.0)</p>
+
+<h2 id="BleAdvertisement">BleAdvertisement</h2>
+
+<p>Fa il parsing di un array di byte rappresentanti un messaggio pubblicitario BLE, trasformandolo in un numero di "Paylod Data Units" (PDUs)</p>
+
+<h2 id="BluetoothCrashResolver">BluetoothCrashResolver</h2>
+
+<p>Classe utilizzata per ovviare al bug 67272 di Android. Questo bug causa il crash del BluetoothService quando faccio lo scan dei dispositivo BLE e incontro un gran numero di dispositivi.</p>
+
+<h2 id="Callback">Callback</h2>
+
+<p>No documentazione</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>Callback(String intentPackageName) 
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>public boolean call(Context context, String dataName, Parcelable data)
+</code></pre>
+
+<p>Prova a fare la callback, prima attraverso il messaggero, poi attraverso intent.</p>
+
+<pre><code>public setIntent(Intent intent)</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="CurveFittedDistanceCalculator">CurveFittedDistanceCalculator</h2>
+
+<p>Classe che stima la distanza tra il dispositivo e il beacon utilizzando una curva best-fit con coefficienti configurabili. I coefficienti devono essere forniti dal chiamante e sono specifici al dispositivo utilizzato.</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>CurveFittedDistanceCalculator(double coefficient1, double coefficient2, double coefficient3)
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>public double calculateDistance(int txPower, double rssi)
+</code></pre>
+
+<p>Calcola una stima di distanza in metri dal beacon basata sul RSSI di riferimento ad un metro e il RSSI rilevato.</p>
+
+<h2 id="CycledLEScanCallback">CycledLEScanCallback</h2>
+
+<p>No documentazione</p>
+
+<h2 id="CycledLeScanner">CycledLeScanner</h2>
+
+<p>No documentazione, guardando i metodi sembra la classe che si occupa di effettuare lo scan.</p>
+
+<h3>Costruttore</h3>
+
+<pre><code class="twoLineCode">protected CycledLeScanner(Context context, long scanPeriod, long betweenScanPeriod, boolean backgroundFlag,
+								CycledLeScanCallback cycledLeScanCallback, BluetoothCrashResolver crashResolver)</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code class="twoLineCode">static CycledLeScanner createScanner(Context context, long scanPeriod, long betweenScanPeriod, boolean backgroundFlag,
+								CycledLeScanCallback cycledLeScanCallback, BluetoothCrashResolver crashResolver)</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>public void setScanPeriods(long scanPeriod, long betweenScanPeriod, boolean backgroundFlag)
+</code></pre>
+
+<p>Dice al cycler il rate di scan e se sta operando in modalità background. Il flag di modalità background viene usato nell'implementazione dello scan di Android 5.0 per fare lo switch tra le modalità LOW&#95;POWER&#95;MODE e LOW&#95;LATENCY&#95;MODE</p>
+
+<pre><code>protected abstract void stopScan()
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>protected void scanLeDevice(Boolean enable)
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>protected BluetoothAdapter getBluetoothAdapter()
+</code></pre>
+
+<p>No documentazione. Un BluetoothAdapter rappresenta l'adapter del dispositivo bluetooth locale. Permette di eseguire attività fondamentali del bluetooth, come istanziare la scoperta/ricerca di dispositivi bluetooth, interrogare una lista di dispositivi collegati (a coppie), instanziare un BluetoothDevice (rappresenta un dispositivo bluetooth remoto) conoscendone l'indirizzo MAC, creare un BluetoothServerSocket per ascoltare le richieste di connesioni di altri dispositivi e cercare per altri dispositivi BLE (funziona come Socket e ServerSocket di TCP/IP in Java).</p>
+
+<h2 id="CycledLeScannerForLollipop">CycledLeScannerForLollipop</h2>
+
+<p>No documentazione, estende CycledLeScanner</p>
+
+<h2 id="DetectionTracker">DetectionTracker</h2>
+
+<p>No documentazione</p>
+
+<h3>Metodi</h3>
+
+<pre><code>public static DetectionTracker getInstance()
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code> public long getLastDetectionTime()
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>public void recordDetection()
+</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="GattBeaconTracker">GattBeaconTracker</h2>
+
+<p>Tiene traccia dei beacon che sono stati visti e se sono dei beacon GATT (General ATTribute) fa li fonde (merge) assieme.</p>
+
+<h3>Metodi</h3>
+
+<pre><code>public Beacon track(Beacon beacon)
+</code></pre>
+
+<p>Tiene traccia del beacon</p>
+
+<h2 id="Identifier">Identifier</h2>
+
+<p>Incapsula l'identificativo di un beacon di lunghezza arbitraria. Può incapsulare un identificativo che è un UUID a 16 bit, o un intero.</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>protected Identifier(byte[] value)
+</code></pre>
+
+<p>Crea una nuova istanza di Identifier</p>
+
+<h3>Metodi</h3>
+
+<pre><code>metodi di conversione tra vari formati (int, String, byte, ecc)
+</code></pre>
+
+<h2 id="Logger">Logger</h2>
+
+<p>Interfaccia, utile per registrare messaggi nella android-beacon-library. Per impostare un logger personalizzato implementa questa interfaccia e impostala con</p>
+
+<pre><code>LogManager.setLogger(Logger)
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>void v(String tag, String message, Object... args)
+</code></pre>
+
+<p>Manda un messaggio di log verboso</p>
+
+<p><strong>Parametri</strong></p>
+
+<ul>
+<li><p>tag: utilizzato per identificare la fonte di un messaggio di log. Di solito identifica la classe o l'activity da cui viene la chiamata di log;</p></li>
+<li><p>message: il messaggio che deve essere loggato;</p></li>
+<li><p>args: argomenti per la formattazione delle stringhe.</p></li>
+</ul>
+
+<p><strong>Alternativa</strong></p>
+
+<pre><code>void v(Throwable t, String tag, String message, Object... args)
+</code></pre>
+
+<p><strong>Parametri</strong></p>
+
+<ul>
+<li><p>t: eccezione che deve essere registrata nel log.</p>
+
+<p>void d(String tag, String message, Object... args)</p></li>
+</ul>
+
+<p>Invia un messaggio di log di debug</p>
+
+<h2 id="Loggers">Loggers</h2>
+
+<p>Classe contenenti metodi statici per ottenere implementazioni differenti di Logger</p>
+
+<h3>Metodi</h3>
+
+<pre><code>public static Logger empty()
+</code></pre>
+
+<p>Ottieni un logger che non fa nulla</p>
+
+<pre><code>public static Logger verboseLogger()
+</code></pre>
+
+<p>Ottieni un logger che registra tutti i messaggi nel log di default di Android</p>
+
+<pre><code>public static Logger warningLogger()
+</code></pre>
+
+<p>Ottieni un logger che registra messaggi di warning e maggiori</p>
+
+<h2 id="LogManager">LogManager</h2>
+
+<p>Classe final, è un manager per fare log dei beacon della libreria AltBeacon. Quello di default è Loggers.warningLogger()</p>
+
+<h3>Metodi</h3>
+
+<pre><code>static void setLogger(Logger logger)
+</code></pre>
+
+<p>Imposta il logger utilizzato dalla libreria</p>
+
+<h2 id="ModelSpecificDistanceCalculator">ModelSpecificDistanceCalculator</h2>
+
+<p>Ottieni un DistanceCalculator appropriato per uno specifico modello Android. Utilizza una tabella per ottenere i coefficienti per il DistanceCalculator in base al modello del dispositivo</p>
+
+<h4>Costruttore</h4>
+
+<pre><code>ModelSpecificDistanceCalculator(Context context, String remoteUpdateUrlString)
+</code></pre>
+
+<p>Ottiene il miglior DistanceCalculator possibile per il dispositivo Android</p>
+
+<pre><code>ModelSpecificDistanceCalculator(Context context, String remoteUpdateUrlString, AndroidModel model)
+</code></pre>
+
+<p>Ottiene il miglior DistanceCalculator possibile per il dispositivo Android passato come argomento</p>
+
+<h3>Metodi</h3>
+
+<pre><code>public double calculateDistance(int txPower, double rssi)
+</code></pre>
+
+<p>Niente documentazione</p>
+
+<h2 id="ModelSpecificDistanceUpdate">ModelSpecificDistanceUpdate</h2>
+
+<p>No documentazione</p>
+
+<h3>Metodi</h3>
+
+<pre><code>protected Void doInBackground(Void... params)
+</code></pre>
+
+<p>No documentazione (Void è intenzionalmente maiuscolo)</p>
+
+<h2 id="MonitoringData">MonitoringData</h2>
+
+<p>No documentazione</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>public MonitoringData(boolean inside, Region region)</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>public boolean isInside()
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>public Region getRegion()
+</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="MonitorNotifier">MonitorNotifier</h2>
+
+<p>Interfaccia, implementata dalle classi che ricevono le notifiche di monitoraggio dei beacon.</p>
+
+<h3>Campi dati</h3>
+
+<pre><code>static final int INSIDE
+</code></pre>
+
+<p>Indica che il dispositivo è dentro la Region del beacon</p>
+
+<pre><code>static final int OUTSIDE
+</code></pre>
+
+<p>Indica che il dispositivo non è dentro la Region del beacon</p>
+
+<h3>Metodi</h3>
+
+<pre><code>void didEnterRegion(Region region)
+</code></pre>
+
+<p>Chiamata quando almeno un beacon in una Region è visibile</p>
+
+<pre><code>void didExitRegion(Region region)
+</code></pre>
+
+<p>Chiamata quando nessun beacon in una Region è visibile</p>
+
+<h2 id="MonitorState">MonitorState</h2>
+
+<p>No documentazione</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>public MonitorState(Callback c)
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>public Callback getCallback()</code></pre>
+<p>No documentazione</p>
+<pre><code>public boolean markInside()</code></pre>
+<p>No documentazione</p>
+<pre><code>public boolean isNewlyOutside()</code></pre>
+<p>No documentazione</p>
+<pre><code>public boolean isInside()</code></pre>
+<p>No documentazione</p>
+</code></pre>
+
+<h2 id="NonBeaconLeScanCallback">NonBeaconLeScanCallback</h2>
+
+<p>Interfaccia, permette un'implementazione per rilevare dispositivi BLE che non siano beacon</p>
+
+<h2 id="Pdu">Pdu</h2>
+
+<p>Converte una stringa di dati da uno scan BLE in un Payload Data Unit (PDU)</p>
+
+<h2 id="RangedBeacon">RangedBeacon</h2>
+
+<p>No documentazione</p>
+
+<h2 id="RangeNotifier">RangeNotifier</h2>
+
+<p>Interfaccia implementata dalle classi che ricevono notifiche di range del beacon</p>
+
+<h3>Metodi</h3>
+
+<pre><code>void didRangeBeaconsInRegion(Collection&lt;Beacon&gt; beacons, Region region)
+</code></pre>
+
+<p><strong>Parametri</strong></p>
+
+<ul>
+<li>beacons: una collezione dei beacon che sono stati visti nell'ultimo secondo;</li>
+<li>region: l'oggetto Region che definisce i criteri per il beacon nel range.</li>
+</ul>
+
+<h2 id="RangeState">RangeState</h2>
+
+<p>No documentazione</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>public RangeState(Callback c)
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>public Callback getCallback()
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>public void addBeacon(Beacon beacon)
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>public Collection&lt;Beacon&gt; finalizeBeacons()
+</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="RangingData">RangingData</h2>
+
+<p>No documentazione</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>RangingData(Collection&lt;Beacon&gt; beacons, Region region)
+</code></pre>
+
+<h2 id="Region">Region</h2>
+
+<blockquote>
+  <p>This class represents a criteria of fields used to match beacons. The uniqueId field is used to distinguish this Region in the system. When you set up monitoring or ranging based on a Region and later want to stop monitoring or ranging, you must do so by passing a Region object that has the same uniqueId field value. If it doesn't match, you can't cancel the operation. There is no other purpose to this field. The region can be constructed from a multi-part identifier. The first identifier is the most significant, the second the second most significant, etc. When constructing a range, any or all of these identifiers may be set to null, which indicates that they are a wildcard and will match any value.</p>
+</blockquote>
+
+<h3>Costruttori</h3>
+
+<pre><code>public Region(String uniqueId, Identifier id1, Identifier id2, Identifier id3)
+</code></pre>
+
+<p>Costruisce un nuovo oggetto Region da usare per fare monitoring o ranging. Gli id possono essere null</p>
+
+<pre><code>public Region(String uniqueId, List&lt;Identifier&gt; identifiers)
+</code></pre>
+
+<p>Costruisce un nuovo oggetto Region da usare per fare monitoring o ranging</p>
+
+<h3>Metodi</h3>
+
+<pre><code>public String getUniqueId()
+</code></pre>
+
+<p>Ritorna l'id utilizzato per iniziare/finire di fare monitoring o ranging su un'area quando si chiamano i metodi di BeaconManager</p>
+
+<pre><code>public boolean matchesBeacon(Beacon beacon)
+</code></pre>
+
+<p>Controlla se un oggetto Beacon è incluso nei criteri di match della attuale Region</p>
+
+<h2 id="RegionBootstrap">RegionBootstrap</h2>
+
+<p>Permette all'utente di impostare un lancio in background di una app quando un utente entra in una Region. Creando e mantenendo un riferimento a questa classe si causerà uno scan in background dei beacon all'avvio del dispositivo android.</p>
+
+<blockquote>
+  <p>If a matching beacon is detected, the BootstrapNotifier didEnterRegion method will be called, allowing the application to launch an Activity, send a local notification, or perform any other action desired. Using this class as described above will also cause beacon scanning to start back up after power is connected or disconnected from a device if the user has force terminated the app. IMPORTANT NOTE: The RegionBootstrap class registers an internal MonitorNotifier with the BeaconManager. If you use the RegionBootstrap, your application must not manually register a second MonitorNotifier, otherwise it will unregister the one configured by the RegionBootstrap, effectively disabling it. When using the RegionBootstrap, any custom monitoring code must therefore be placed in the callback methods in the BootstrapNotifier implementation passed to the RegionBootstrap.</p>
+</blockquote>
+
+<h3>Costruttore</h3>
+
+<pre><code>RegionBootstrap(BootstrapNotifier application, List&lt;Region&gt; regions)
+</code></pre>
+
+<p>Costruttore che farà avviare la application quando si entrerà in una delle regions.</p>
+
+<h3>Metodi</h3>
+
+<pre><code>void disable()
+</code></pre>
+
+<p>Utilizzato per disattivare ulteriori callback dopo che la prima è stata inviata</p>
+
+<h2 id="RssiFilter">RssiFilter</h2>
+
+<p>Interfaccia, può essere implementata per sovrascrivere le misure e il filtraggio dei valori Rssi</p>
+
+<h3>Metodi</h3>
+
+<pre><code>void addMeasurement(Integer rssi)
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>boolean noMeasurementsAvailable()
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>double calculateRssi()
+</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="RunningAverageRssiFilter">RunningAverageRssiFilter</h2>
+
+<p>Calcola un valore Rssi sulla base di una lista di valori di Rssi arbitrari (la media viene calcolata come una semplice media matematica)</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>public RunningAverageRssiFilter()
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>public void addMeasurement(Integer rssi)
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>public boolean noMeasurementsAvailable()
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>public double calculateRssi()
+</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="ScanFilterUtils">ScanFilterUtils</h2>
+
+<p>No documentazione, sembra che definisca metodi per impostare il filtraggio sui BeaconParser</p>
+
+<h2 id="StartRMData">StartRMData</h2>
+
+<p>No documentazione, sembra essere la classe per accedere ai dati di una Region</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>StartRMData(Region region, String callbackPackageName, long scanPeriod, long betweenScanPeriod, boolean backgroundFlag) 
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>praticamente solo metodi getSomething() per ottenere dati della classe o la Region stessa
+</code></pre>
+
+<h2 id="StartupBroadcastReceiver">StartupBroadcastReceiver</h2>
+
+<p>No documentazione</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>public StartupBroadcastReceiver()
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>public void onReceive(Context context, Intent intent)
+</code></pre>
+
+<p>Dato un Context (interfaccia per le informazioni globali di un ambiente di sviluppo), sembra definire che cosa fare (Intent, descrizione astratta di una azione che si vuole eseguire) alla ricezione di qualcosa</p>
+
+<h2 id="StaticBeaconSimulator">StaticBeaconSimulator</h2>
+
+<p>No documentazione</p>
+
+<h3>Costruttore</h3>
+
+<pre><code>public StaticBeaconSimulator()
+</code></pre>
+
+<h3>Metodi</h3>
+
+<pre><code>public List&lt;Beacon&gt; getBeacons()
+</code></pre>
+
+<p>No documentazione</p>
+
+<pre><code>public void setBeacons(List&lt;Beacon&gt; beacons)
+</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="Stats">Stats</h2>
+
+<p>Modulo di statistiche per il test interno delle performance della libreria</p>
+
+<h3>Metodi</h3>
+
+<pre><code>public void log(Beacon beacon)
+</code></pre>
+
+<p>No documentazione</p>
+
+<h2 id="Stats.Sample">Stats.Sample</h2>
+
+<p>Classe interna di Stats, ha una serie di campi dati necessari a Stats</p>
+
+<h2 id="UrlBeaconUrlCompressor">UrlBeaconUrlCompressor</h2>
+
+<p>Fornisce funzioni di encoding/decoding per l'URL dei beacon <a href="https://github.com/google/uribeacon">https://github.com/google/uribeacon</a> (repo che spiega come vengono usati i beacon per condividere uri, li porta a fare parte dell'internet of things)</p>
+</div>
 </body>
 </html>
