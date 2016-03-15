@@ -1,0 +1,67 @@
+html {
+	margin: 0;
+	padding: 0;
+}
+
+#content{
+	padding-left: 1em;
+	padding-right: 1em;
+	background-color: AliceBlue;
+	width: 80%;
+	margin-left:10%;
+	margin-right:10%;
+	border-right:1px;
+	border-left:1px;
+	border-style: solid;
+	border-color: black;
+}
+
+h1{
+	text-align: center;
+	font: helvetica, sans-serif;
+	font-size: 3em;
+}
+
+h2{
+	font-size: 2em;
+}
+
+h3{
+	font-size: 1.5em;
+}
+
+code{
+	margin-left: 2em;
+	padding: 0.5em;
+	color: navy;
+	border: 1px;
+	border-style: solid;
+	
+	border-color:black;
+}
+
+.twoLineCode{
+	display: block;
+}
+
+blockquote{
+	font-style: italic;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	border: 1px;
+	border-style: solid;
+	color: DarkSlateGray;
+}
+
+.examples{
+	border:0;
+}
+
+#indexShow{
+	padding: 0;
+	width: 5em;
+}
+
+p{
+	margin: 0.5em;
+}
