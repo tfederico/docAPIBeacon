@@ -126,7 +126,7 @@
 <h2 id="BeaconConsumer">BeaconConsumer</h2>
 
 <p>Un'interfaccia per una Activity o un Service che vuole interagire con i beacon. L'interfaccia viene utilizzata insieme a BeaconManager e fornice una callback quando BeaconService è pronto per essere utilizzato. Finché questa callback non viene effettuata, collocare e monitorare beacons non è possibile. Nell'esempio, una Activity implementa BeaconConsumer, la lega (fa il bind) al suo servizio, poi quando riceve la callback che conferma che il servizio è pronto, inizia a monitorare.</p>
-<pre><code class="examples">
+<pre><code class="twoLineCode">
   public class RangingActivity extends Activity implements BeaconConsumer {
   protected static final String TAG = "RangingActivity";
   private BeaconManager beaconManager = BeaconManager.getInstanceForApplication(this);
