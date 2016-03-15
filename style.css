@@ -35,8 +35,7 @@ code{
 	padding: 0.5em;
 	color: navy;
 	border: 1px;
-	border-style: solid;
-	
+	border-style: dotted;
 	border-color:black;
 }
 
@@ -48,14 +47,12 @@ blockquote{
 	font-style: italic;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
-	border: 1px;
+	border: 1.5px;
 	border-style: solid;
 	color: DarkSlateGray;
 }
 
-.examples{
-	border:0;
-}
+
 
 #indexShow{
 	padding: 0;
